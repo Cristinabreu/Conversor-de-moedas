@@ -6,7 +6,6 @@ function convertValues() {
     const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
     const currencyValueConverted = document.querySelector(".currency-value")
 
-    console.log(currencySelect.value)
     const dolarToday = 5.50
     const euroToday = 6.20
 
@@ -36,5 +35,22 @@ function convertValues() {
         .format(inputCurrencyValue)
 
 }
-convertButton.addEventListener("click", convertValues)
+function changeCurrency() {
+    const currencyName = document.getElementById("currency-name")
+    const currencyImage = document.querySelector(".flag-currency")
 
+    if (currencySelect.value === "dolar") {
+        currencyName.innerHTML = "Dólar americano"
+        currencyImage.src = "./assets/dolar.png"
+
+    }
+
+    if (currencySelect.value === "euro") {
+        currencyName.innerHTML = "Euro"
+        currencyImage.src = "./assets/euro.png"
+    }
+    convertValues()
+}
+
+currencySelect.addEventListener("change", changeCurrency)
+convertButton.addEventListener("click", convertValues)
